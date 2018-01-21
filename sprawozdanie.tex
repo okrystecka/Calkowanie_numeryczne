@@ -2,13 +2,10 @@
 \usepackage{fancyhdr}
 %\usepackage{polski}
 %\usepackage[cp1250]{inputenc}
-\setlength{\textheight}{24.4cm}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage{graphicx}
-\graphicspath{ {..\Calkowanie_numeryczne} }
-
+%\setlength{\textheight}{24.4cm}
 
 \begin{titlepage}
 	\title{Sprawozdanie z projektu z Metod Numerycznych}
@@ -21,8 +18,7 @@
 	\lhead{Data wykonania}
 
 	
-	Sprawozdanie z projektu z Metod Numerycznych
-	zawartość...\\
+	\textbf{Temat nr 4: Całkowanie numeryczne przy użyciu kwadratur Newtona-Cotesa}\\
 	\begin{center}
 		
 		\begin{tabular}{|c|c|c|c|c|}
@@ -33,40 +29,38 @@
 		\end{tabular}
 
 	\end{center}
-	\section{Wstęp}
+	\section{Wstep}
 	Projekt sprowadza się do obliczenia wartości całki, określonej wzorem (1), używając kwadratur Newtona-Cotesa - metody trapezów i parabol. W celu ułatwienia obliczeń, wyrażenie zostało podzielone na współczynnik $\frac{1}{\sigma\sqrt{2\pi}}$ oraz całkę
 		\begin{equation}
-			I = \int_{a}^{b} exp  \left( - \frac{(x-\overline{x})^2}{2\sigma^2}   \right) dx
+			I = \frac{1}{\sigma\sqrt{2\pi}}  \int_{a}^{b} exp  \left( - \frac{(x-\overline{x})^2}{2\sigma^2}   \right) dx
 		\end{equation}
-	Poniżej zamieszczono krótki opis stosowanych metod
-	\\\\
-	\textbf {Metoda trapezow }
-	\\ 
-	Metoda opiera się na podziale przedziału całkowania na identyczne odcinki. Następnie dla każdego punktu granicznego odcinka znajduje się wartość funkcji podcałkowej w tym punkcie. Tak powstają trapezy - wysokość jest obranym krokiem całkowania, jedną z podstaw jest wartość funkcji dla jednego końca odcinka, a drugą dla drugiego. Korzystając ze wzoru na pole trapezu i sumując wszystkie powstałe w ten sposób trapezy jesteśmy w stanie podać przybliżoną wartość całki. Poniżej przedstawiono wartość kwadratury na przedziale [a,b] dla funkcji f(x).
-	
-	\begin{equation}	
-	K_{1}(f)=\frac{b-a}{2}(f(a)+f(b))  
-	\end{equation}
-	
-	 Naturalnie im mniejszy krok całkowania tym przedział dzielimy na więcej trapezów o mniejszej wysokości, co przekłada się na dokładniejszy wynik. 
-	\\\\
-	\textbf {Metoda parabol (Simpsona)}
-	\\ 
-	Metoda parabol jest jedną z najdokładniejszych metod przybliżonego całkowania. Inaczej niż w metodzie trapezów całkę przybliża się sumą wycinków obszarów pod parabolą. Podobnie jak w metodzie trapezów pierwszym krokiem jest podział przedziału całkowania na takie same odcinki. Kolejno oblicza się środek każdego odcinka i wyznacza się wartość funkcji podcałkowej dla tego punktu. Następnie obliczane są współczynniki paraboli $g_{i}$(x) przechodzącej przez 3 punkty (wartości funkcji podcałkowej) postaci
-\begin{center}$g_{i}(x)=a_{i}x^{2}+b_{i}x+c_{i} $ gdzie $i\epsilon<x_{n},x_{n+1}>$ \end{center}
-\newpage
-	Wzór Simpsona na przedziale [a,b]
-	\begin{equation}
-	K_{2}(f)=\frac{(b-a)}{6}(f(a)+4f(\frac{a+b}{2})+f(b)) 
-	\end{equation}
-	 W ten sposób funkcja zostaje aproksymowana fragmentami parabol. Ponieważ w większości przypadków mamy do czynienia z funkcjami nieliniowymi ta metoda prowadzi do uzyskania najmniejszego błędu.  
-	 
-	 
-	 Przeprowadzono symulacje podanych metod w środowisku MatLab. Zbadano dla każdej metody wynik obliczonej całki a także błędy związane z zastosowaniem metod numerycznych dla 3 przedziałów całkowania. Dobrano także krok całkowania aby 
-	
-
-	
+		Poniżej zamieszczono krótki opis stosowanych metod
+		\\\\
+		\textbf {Metoda trapezow }
+		\\ 
+		Metoda opiera się na podziale przedziału całkowania na identyczne odcinki. Następnie dla każdego punktu granicznego odcinka znajduje się wartość funkcji podcałkowej w tym punkcie. Tak powstają trapezy - wysokość jest obranym krokiem całkowania, jedną z podstaw jest wartość funkcji dla jednego końca odcinka, a drugą dla drugiego. Korzystając ze wzoru na pole trapezu i sumując wszystkie powstałe w ten sposób trapezy jesteśmy w stanie podać przybliżoną wartość całki. Poniżej przedstawiono wartość kwadratury na przedziale [a,b] dla funkcji f(x).
+		
+		\begin{equation}	
+		K_{n}^{T}=\frac{h}{2}\sum_{i=0}^{n-1} \left(f(a)+f(b)\right)  , f_{i} = f\left(x_{i}\right)
+		\end{equation}
+		gdzie h - długość przedziału całkowania.\\
+		Naturalnie im mniejszy krok całkowania tym przedział dzielimy na więcej trapezów o mniejszej wysokości, co przekłada się na dokładniejszy wynik. 
+		\\\\
+		\textbf {Metoda parabol (Simpsona)}
+		\\ 
+		Metoda parabol jest jedną z najdokładniejszych metod przybliżonego całkowania. Inaczej niż w metodzie trapezów całkę przybliża się sumą wycinków obszarów pod parabolą. Podobnie jak w metodzie trapezów pierwszym krokiem jest podział przedziału całkowania na takie same odcinki. Kolejno oblicza się środek każdego odcinka i wyznacza się wartość funkcji podcałkowej dla tego punktu. Następnie obliczane są współczynniki paraboli $g_{i}$(x) przechodzącej przez 3 punkty (wartości funkcji podcałkowej) postaci
+		\begin{center}$g_{i}(x)=a_{i}x^{2}+b_{i}x+c_{i} $ gdzie $i\epsilon<x_{n},x_{n+1}>$ \end{center}
+		Wzór Simpsona na przedziale [a,b]
+		\begin{equation}
+		K_{n}^{P}(f)=\frac{h}{3}\sum_{i=0}^{n/2-1}(f_{2i}+4f_{2i+1}+f_{2i+2}), f_{i} = f\left(x_{i}\right) 
+		\end{equation}
+		W ten sposób funkcja zostaje aproksymowana fragmentami parabol. Ponieważ w większości przypadków mamy do czynienia z funkcjami nieliniowymi ta metoda prowadzi do uzyskania najmniejszego błędu.  
+		
+		
+		Przeprowadzono symulacje podanych metod w środowisku MatLab. Zbadano dla każdej metody wynik obliczonej całki a także błędy związane z zastosowaniem metod numerycznych dla 3 przedziałów całkowania. Dobrano także krok całkowania aby 
+		
 	\section{Wyniki}
+Wyniki obliczeń zostały zebrane w poniższej tabeli:\\
 	\begin{tabular}{|c|c|c|c|}
 		\hline 
 		& \multicolumn{3}{c|}{Przedział całkowania} \\ 
@@ -77,16 +71,14 @@
 		\hline 
 		Wynik - met. trapezów & $0.682386776678695$ & $0.954218606628634$ & $0.997183726883306$ \\ 
 		\hline 
-		Błąd met. trapezów  & $0.04433$  & $0.02829$ & $0.01168$ \\ 
+		Błąd względny met. trapezów$\left[\%\right]$ & $0.04433$ & $0.02829$ & $0.01168$  \\ 
 		\hline 
 		Wynik - met. parabol & $0.682083809168075$ & $0.954499438241541$ & $0.997061231960167$ \\ 
 		\hline 
-		Błąd met. parabol & $0.08870$  & $0,0012$ & $0.02396$ \\ 
+		Błąd względny met. parabol $\left[\%\right]$ & $0.08870$ & $0,0012$ & $0.02396$ \\ 
 		\hline 
 	\end{tabular} 
-\\\\
-
-Ponadto, oszacowany został błąd obu metod na zadanych przedziałach. Określony on został dla metody trapezów jako:
+\\ gdzie błąd względny został wyliczony ze wzoru: $\frac{licznik}{mianownik} $ \\Ponadto, oszacowany został błąd obu metod na zadanych przedziałach. Określony on został dla metody trapezów jako:
 \begin{equation}
 E \left(f\right) = - \frac{\left(b-a\right)^{3}}{12n^{2}} f^{\left(2\right)} \left( \xi \right)
 \end{equation}
@@ -101,22 +93,23 @@ gdzie $\xi \in \left[a, b\right]$. \\ Możemy zauważyć, że jest on zależny o
 	\hline 
 	& $a= \overline{x} - \sigma, b = \overline{x} + \sigma$ & $a= \overline{x} - 2 \sigma, b = \overline{x} + 2\sigma$ & $a= \overline{x} - 3 \sigma, b = \overline{x} + 3 \sigma$ \\ 
 	\hline 
-	Oszacowanie błędu met. trapezów &  &  &  \\ 
+	Oszacowanie błędu met. trapezów & -1.0417e-08 & -2.0833e-04 & -1.2500e-05  \\ 
 	\hline 
-	Oszacowanie błędu met. parabol &  &  &  \\ 
+	Oszacowanie błędu met. parabol & -3.2552e-15 & -6.5104e-07 & -1.5625e-09 \\ 
 	\hline 
 \end{tabular} 
-Narysowano także wykresy błędów metody, w zależności od kroku całkowania
-	 \includegraphics[width=\textwidth]{Trap1.jpg}
-	 \includegraphics[width=\textwidth]{Trap2.jpg}
-	 \includegraphics[width=\textwidth]{Trap3.jpg}
-	  \includegraphics[width=\textwidth]{Para1.jpg}
-	 \includegraphics[width=\textwidth]{Para2.jpg}
-	 \includegraphics[width=\textwidth]{Para3.jpg}
-	 
 
+Narysowano także wykresy błędów metody, w zależności od kroku całkowania:
+%\includegraphics[width=\textwidth]{Trap1.jpg}
+%\includegraphics[width=\textwidth]{Trap2.jpg}
+%\includegraphics[width=\textwidth]{Trap3.jpg}
+%\includegraphics[width=\textwidth]{Para1.jpg}
+%\includegraphics[width=\textwidth]{Para2.jpg}
+%\includegraphics[width=\textwidth]{Para3.jpg}
 	\section{Wnioski}
-	a tu cholera wie co bedzie. Na pewno wydruk napisanego programu xD xD xD
+	Otrzymane wyniki dowiodły możliwości przeprowadzenia całkowania numerycznego z wykorzystaniem metod trapezów i parabol. W obu przypadkach otrzymane wyniki są zgodne (do kilku miejsc po przecinku) co do podanego wyniku dokładnego. Jak wszystkie metody numeryczne również i te nie są pozbawione błędów wynikających przede wszystkim z przybliżeń.\\
+	Zauważono wpływ przedziału całkowania na efektywnośc obu metod, ponadto bardzo istotnym czynnikiem był też krok całkowania, który należało dobrać tak aby uzyskać wynik całki podobny do podanego.\\
+	Sporządzone wykresy błędu  obrazują w jaki sposób zmienia się błąd w zależności od obranego kroku całkowania\\
 \end{document}
 \begin{thebibliography}
 	\bibitem{wyklady} Zofia, \textit{Materiały do wykładów oraz projektów}
