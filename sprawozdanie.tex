@@ -2,6 +2,9 @@
 \usepackage{fancyhdr}
 %\usepackage{polski}
 %\usepackage[cp1250]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
 \setlength{\textheight}{24.4cm}
 
 \begin{titlepage}
@@ -16,7 +19,7 @@
 
 	
 	Sprawozdanie z projektu z Metod Numerycznych
-	zawarto��...\\
+	zawartość...\\
 	\begin{center}
 		
 		\begin{tabular}{|c|c|c|c|c|}
@@ -33,7 +36,24 @@
 			I = \frac{1}{\sigma\sqrt{2\pi}}  \int_{a}^{b} exp  \left( - \frac{(x-\overline{x})^2}{2\sigma^2}   \right) dx
 		\end{equation}
 	\section{Wyniki}
-	A tutaj wrzuce tabelki, wykresy, porownanie wynikow
+	A tutaj wrzuce tabelki, wykresy, porownanie wynikow\\
+	\begin{tabular}{|c|c|c|c|}
+		\hline 
+		& \multicolumn{3}{c|}{Przedział całkowania} \\ 
+		\hline 
+		& $a= \overline{x} - \sigma, b = \overline{x} + \sigma$ & $a= \overline{x} - 2 \sigma, b = \overline{x} + 2\sigma$ & $a= \overline{x} - 3 \sigma, b = \overline{x} + 3 \sigma$ \\ 
+		\hline 
+		Wynik dokładny & 0.6826894 & 0.95448873 & 0.9973002 \\ 
+		\hline 
+		Wynik - met. trapezów &  &  &  \\ 
+		\hline 
+		Błąd met. trapezów &  &  &  \\ 
+		\hline 
+		Wynik - met. parabol &  &  &  \\ 
+		\hline 
+		Błąd met. parabol &  &  &  \\ 
+		\hline 
+	\end{tabular} 
 	\section{Wnioski}
 	a tu cholera wie co bedzie. Na pewno wydruk napisanego programu xD xD xD
 \end{document}
