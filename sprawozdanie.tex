@@ -64,18 +64,28 @@
 		Błąd względny met. parabol &  &  &  \\ 
 		\hline 
 	\end{tabular} 
-Ponadto, oszacowany został błąd obu metod na zadanych przedziałach. \\
-\begin{tabular}{|c|c|c|c|}
+\\ \\Ponadto, oszacowany został błąd obu metod na zadanych przedziałach. Określony on został dla metody trapezów jako:
+\begin{equation}
+E \left(f\right) = - \frac{\left(b-a\right)^{3}}{12n^{2}} f^{\left(2\right)} \left( \xi \right)
+\end{equation}
+gdzie $\xi \in \left[a, b\right]$, oraz dla metody parabol:
+\begin{equation}
+E \left(f\right) = - \frac{\left(b-a\right)^{5}}{180n^{4}} f^{\left(4\right)} \left( \xi \right)
+\end{equation}
+gdzie $\xi \in \left[a, b\right]$. \\ Możemy zauważyć, że jest on zależny od odpowiednio 3 i 5 potęgi przedziału całkowania. Można więc go zmniejszyć, zmniejszając dany przedział. Widoczne jest to w wynikach obliczeń, zawartych w poniższej tabeli: \\
+\begin{tabular}{|p{3.5cm}|c|c|c|}
 	\hline 
 	& \multicolumn{3}{c|}{Przedział całkowania} \\ 
 	\hline 
 	& $a= \overline{x} - \sigma, b = \overline{x} + \sigma$ & $a= \overline{x} - 2 \sigma, b = \overline{x} + 2\sigma$ & $a= \overline{x} - 3 \sigma, b = \overline{x} + 3 \sigma$ \\ 
 	\hline 
-	Oszacowanie błędu met. trapezów &  &  &  \\ 
+	Oszacowanie błędu met. trapezów & -1.0417e-08 & -2.0833e-04 & -1.2500e-05  \\ 
 	\hline 
-	Oszacowanie błędu met. parabol &  &  &  \\ 
+	Oszacowanie błędu met. parabol & -3.2552e-15 & -6.5104e-07 & -1.5625e-09 \\ 
 	\hline 
 \end{tabular} 
+
+
 	\section{Wnioski}
 	a tu cholera wie co bedzie. Na pewno wydruk napisanego programu xD xD xD
 \end{document}
