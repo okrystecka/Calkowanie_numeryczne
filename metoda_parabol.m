@@ -8,17 +8,18 @@ function[wynik] = metoda_parabol(k, min, max)
 
   %obliczanie calki K = integer(f(x))
   n = (max - min)/k; % obliczanie ilosci punktow w danym przedziale przy skoku rownym k 
-  suma = f(min);
-  for i = 1:(n/2)
-      suma = suma + 4*f(min + (2*i-1)*k);
-  end
-  for i = 1:(n/2 - 1)
-      suma = suma + 2*f(min+2*i*k);
-  end
-  suma = suma + f(max);
+  suma = 0;
+  for i = 0:(n/2-1)
+    %dk = min +i*k;
+    a = f(min + 2*i*k);
+    b = 4*f(min + (2*i+1)*k);
+    c = f(min + (2*i+2)*k);
+    K = a + b + c;
+    suma = suma + K;
+end
 
   
-  I = k*suma/3;
+  I = k.*suma/3;
   wynik = I/(sigma*sqrt(2*pi));
   disp('I = ')
   disp(wynik);
