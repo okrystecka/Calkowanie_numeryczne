@@ -41,14 +41,14 @@ if (o==1)
    if (p==1) 
        
        wykres(a, b, 0);
-       metoda_trapezow(0.0000001, a, b);
-       blad_kwadratur(0.0000001, a, b, 0);
+       metoda_trapezow(0.00005, a, b);
+       blad_kwadratur(0.00005, a, b, 0);
 
    elseif (p==2)
        
        wykres(a, b, 1);
-       display(metoda_parabol(0.00000001, a, b));
-       blad_kwadratur(0.00000001, a, b, 1);
+       display(metoda_parabol(0.00005, a, b));
+       blad_kwadratur(0.00005, a, b, 1);
        
    end 
    
@@ -59,14 +59,14 @@ elseif (o==2)
    if (p==1) 
        
        wykres(a, b, 0);
-       metoda_trapezow(0.0000001, a, b)
-       blad_kwadratur(0.0000001, a, b, 0);
+       metoda_trapezow(0.005, a, b)
+       blad_kwadratur(0.005, a, b, 0);
        
    elseif (p==2)
        
        wykres(a, b, 1);
-       metoda_parabol(0.0000001, a, b);
-       blad_kwadratur(0.00000001, a, b, 1);
+       metoda_parabol(0.005, a, b);
+       blad_kwadratur(0.005, a, b, 1);
        
    end 
    
@@ -77,14 +77,14 @@ elseif (o==3)
    if (p==1) 
        
        wykres(a, b, 0);
-       metoda_trapezow(0.0000001, a, b);
-       blad_kwadratur(0.0000001, a, b, 0);
+       metoda_trapezow(0.001, a, b);
+       blad_kwadratur(0.001, a, b, 0);
        
    elseif (p==2)
        
        wykres(a, b, 1);
-       metoda_parabol(0.0000001, a, b);
-       blad_kwadratur(0.00000001, a, b, 1);
+       metoda_parabol(0.001, a, b);
+       blad_kwadratur(0.001, a, b, 1);
        
    end 
 end
