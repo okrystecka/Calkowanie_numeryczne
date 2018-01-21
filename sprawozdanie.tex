@@ -2,11 +2,10 @@
 \usepackage{fancyhdr}
 %\usepackage{polski}
 %\usepackage[cp1250]{inputenc}
-\setlength{\textheight}{24.4cm}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-
+\setlength{\textheight}{24.4cm}
 
 \begin{titlepage}
 	\title{Sprawozdanie z projektu z Metod Numerycznych}
@@ -34,20 +33,27 @@
 	\section{Wstep}
 	Projekt sprowadza się do obliczenia wartości całki, określonej wzorem (1), używając kwadratur Newtona-Cotesa - metody trapezów i parabol. W celu ułatwienia obliczeń, wyrażenie zostało podzielone na współczynnik $\frac{1}{\sigma\sqrt{2\pi}}$ oraz całkę
 		\begin{equation}
-			I = \int_{a}^{b} exp  \left( - \frac{(x-\overline{x})^2}{2\sigma^2}   \right) dx
+			I = \frac{1}{\sigma\sqrt{2\pi}}  \int_{a}^{b} exp  \left( - \frac{(x-\overline{x})^2}{2\sigma^2}   \right) dx
 		\end{equation}
-	Poniżej zamieszczono krótki opis stosowanych metod
-	\\\\
-	\textbf {Metoda trapezow }
-	\\ 
-	Metoda opiera się na podziale przedziału całkowania na identyczne odcinki. Następnie dla każdego punktu granicznego odcinka znajduje się wartość funkcji podcałkowej w tym punkcie. Tak powstają trapezy - wysokość jest obranym krokiem całkowania, jedną z podstaw jest wartość funkcji dla jednego końca odcinka, a drugą dla drugiego. Korzystając ze wzoru na pole trapezu i sumując wszystkie powstałe w ten sposób trapezy jesteśmy w stanie podać przybliżoną wartość całki. Naturalnie im mniejszy krok całkowania tym przedział dzielimy na więcej trapezów o mniejszej wysokości, co przekłada się na dokładniejszy wynik. 
-	\\\\
-	\textbf {Metoda parabol (Simpsona)}
-	\\ 
-	Metoda parabol jest jedną z najdokładniejszych metod przybliżonego całkowania. Inaczej niż w metodzie trapezów całkę przybliża się sumą wycinków obszarów pod parabolą. Podobnie jak w metodzie trapezów pierwszym krokiem jest podział przedziału całkowania na takie same odcinki. Kolejno oblicza się środek każdego odcinka i wyznacza się wartość funkcji podcałkowej dla tego punktu. Następnie tworzona jest parabola przechodząca przez 3 punkty (wartości funkcji podcałkowej). W ten sposób funkcja zostaje aproksymowana fragmentami parabol. Ponieważ w większości przypadków mamy do czynienia z funkcjami nieliniowymi ta metoda prowadzi do uzyskania najmniejszego błędu.  
-	
 	\section{Wyniki}
-	A tutaj wrzuce tabelki, wykresy, porownanie wynikow
+	A tutaj wrzuce tabelki, wykresy, porownanie wynikow\\
+	\begin{tabular}{|c|c|c|c|}
+		\hline 
+		& \multicolumn{3}{c|}{Przedział całkowania} \\ 
+		\hline 
+		& $a= \overline{x} - \sigma, b = \overline{x} + \sigma$ & $a= \overline{x} - 2 \sigma, b = \overline{x} + 2\sigma$ & $a= \overline{x} - 3 \sigma, b = \overline{x} + 3 \sigma$ \\ 
+		\hline 
+		Wynik dokładny & 0.6826894 & 0.95448873 & 0.9973002 \\ 
+		\hline 
+		Wynik - met. trapezów &  &  &  \\ 
+		\hline 
+		Błąd met. trapezów &  &  &  \\ 
+		\hline 
+		Wynik - met. parabol &  &  &  \\ 
+		\hline 
+		Błąd met. parabol &  &  &  \\ 
+		\hline 
+	\end{tabular} 
 	\section{Wnioski}
 	a tu cholera wie co bedzie. Na pewno wydruk napisanego programu xD xD xD
 \end{document}
