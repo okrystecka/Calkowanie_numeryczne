@@ -38,11 +38,11 @@
 
 	\end{center}
 	\section{Wstęp}
-	Projekt sprowadza się do obliczenia wartości całki, określonej wzorem (1), używając kwadratur Newtona-Cotesa - metody trapezów i parabol. W celu ułatwienia obliczeń, wyrażenie zostało podzielone na współczynnik $\frac{1}{\sigma\sqrt{2\pi}}$ oraz całkę
+	Projekt sprowadza się do obliczenia wartości całki, określonej wzorem (1), używając kwadratur Newtona-Cotesa - metody trapezów i parabol. W celu ułatwienia obliczeń, wyrażenie zostało podzielone na współczynnik $\frac{1}{\sigma\sqrt{2\pi}}$ oraz całkę $ \int_{a}^{b} exp  \left( - \frac{(x-\overline{x})^2}{2\sigma^2}   \right) dx$. Całe obliczane wyrażenie stanowi ich iloczyn:
 		\begin{equation}
 			I = \int_{a}^{b} exp  \left( - \frac{(x-\overline{x})^2}{2\sigma^2}   \right) dx
 		\end{equation}
-	Poniżej zamieszczono krótki opis stosowanych metod
+	Poniżej zamieszczono krótki opis stosowanych metod.
 	\\\\
 	\textbf {Metoda trapezow }
 	\\ 
@@ -59,7 +59,7 @@
 	\\ 
 	Metoda parabol jest jedną z najdokładniejszych metod przybliżonego całkowania. Inaczej niż w metodzie trapezów całkę przybliża się sumą wycinków obszarów pod parabolą. Podobnie jak w metodzie trapezów pierwszym krokiem jest podział przedziału całkowania na takie same odcinki. Kolejno oblicza się środek każdego odcinka i wyznacza się wartość funkcji podcałkowej dla tego punktu. Następnie obliczane są współczynniki paraboli $g_{i}$(x) przechodzącej przez 3 punkty (wartości funkcji podcałkowej) postaci
 \begin{center}$g_{i}(x)=a_{i}x^{2}+b_{i}x+c_{i} $ gdzie $i\epsilon<x_{n},x_{n+1}>$ \end{center}
-\newpage
+%\newpage
 	Wzór Simpsona na przedziale [a,b]
 	\begin{equation}
 	K_{2}(f)=\frac{(b-a)}{6}(f(a)+4f(\frac{a+b}{2})+f(b)) 
@@ -164,7 +164,8 @@ Narysowano także wykresy błędów metody, w zależności od kroku całkowania 
 	\section{Wnioski}
 	Otrzymane wyniki dowiodły możliwości przeprowadzenia całkowania numerycznego z wykorzystaniem metod trapezów i parabol. W obu przypadkach otrzymane wyniki są zgodne (do kilku miejsc po przecinku) co do podanego wyniku dokładnego. Jak wszystkie metody numeryczne również i te nie są pozbawione błędów wynikających przede wszystkim z koniecznych przybliżeń.\\
 	Zauważono wpływ długości przedziału całkowania na efektywność obu metod. Zwiększenie przedziału całkowania przekłada się na zmniejszenie błędu względnego. Odwrotna zależność powinna zachodzić dla błędu metody który jest tym mniejszy im mniejszy przedział całkowania - jednak z niewiadomych przyczyn nie udało się tego ostatecznie dowieść.  Ponadto bardzo istotnym czynnikiem był też krok całkowania, który z jednej strony wpływał na precyzję obliczeń, a z drugiej znacząco wydłużał czas kalkulacji.\\
-	Sporządzone wykresy błędu  obrazują zależność błędu od kroku całkowania - jak widać nie jest to zależność liniowa.
+	Sporządzone wykresy błędu  obrazują zależność błędu od kroku całkowania - jak widać nie jest to zależność liniowa.\\
+	Poniżej dołączony został skrypt programu w języku MatLab.
 
 	\begin{lstlisting}
 	format long
