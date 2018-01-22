@@ -2,23 +2,31 @@
 \usepackage{fancyhdr}
 %\usepackage{polski}
 %\usepackage[cp1250]{inputenc}
+\setlength{\textheight}{24.4cm}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-%\setlength{\textheight}{24.4cm}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{ragged2e}
+\graphicspath{ {..\Calkowanie_numeryczne} }
 
+\newgeometry{tmargin=2.5cm, bmargin=2.5cm, lmargin=2.5cm, rmargin=2.5cm}
 \begin{titlepage}
 	\title{Sprawozdanie z projektu z Metod Numerycznych}
+
 
 \end{titlepage}
 \begin{document}
 		\maketitle	
-	\pagestyle{fancy}
-	\rhead{Aleksandra Krystecka, 276740\\Mateusz Marczuk, 276748}
-	\lhead{Data wykonania}
-
 	
-	\textbf{Temat nr 4: Całkowanie numeryczne przy użyciu kwadratur Newtona-Cotesa}\\
+	\pagestyle{fancy}
+	\textbf {Aleksandra Krystecka} \newline
+	\textbf {Mateusz Marczuk} \newline
+
+	\textbf{Temat nr 4: Całkowanie numeryczne przy użyciu kwadratur Newtona-Cotesa}\\\\
+
 	\begin{center}
 		
 		\begin{tabular}{|c|c|c|c|c|}
@@ -29,38 +37,47 @@
 		\end{tabular}
 
 	\end{center}
-	\section{Wstep}
-	Projekt sprowadza się do obliczenia wartości całki, określonej wzorem (1), używając kwadratur Newtona-Cotesa - metody trapezów i parabol. W celu ułatwienia obliczeń, wyrażenie zostało podzielone na współczynnik $\frac{1}{\sigma\sqrt{2\pi}}$ oraz całkę
+	\section{Wstęp}
+	Projekt sprowadza się do obliczenia wartości całki, określonej wzorem (1), używając kwadratur Newtona-Cotesa - metody trapezów i parabol. W celu ułatwienia obliczeń, wyrażenie zostało podzielone na współczynnik $\frac{1}{\sigma\sqrt{2\pi}}$ oraz całkę $ \int_{a}^{b} exp  \left( - \frac{(x-\overline{x})^2}{2\sigma^2}   \right) dx$. Całe obliczane wyrażenie stanowi ich iloczyn:
 		\begin{equation}
-			I = \frac{1}{\sigma\sqrt{2\pi}}  \int_{a}^{b} exp  \left( - \frac{(x-\overline{x})^2}{2\sigma^2}   \right) dx
+			I = \int_{a}^{b} exp  \left( - \frac{(x-\overline{x})^2}{2\sigma^2}   \right) dx
 		\end{equation}
-		Poniżej zamieszczono krótki opis stosowanych metod
-		\\\\
-		\textbf {Metoda trapezow }
-		\\ 
-		Metoda opiera się na podziale przedziału całkowania na identyczne odcinki. Następnie dla każdego punktu granicznego odcinka znajduje się wartość funkcji podcałkowej w tym punkcie. Tak powstają trapezy - wysokość jest obranym krokiem całkowania, jedną z podstaw jest wartość funkcji dla jednego końca odcinka, a drugą dla drugiego. Korzystając ze wzoru na pole trapezu i sumując wszystkie powstałe w ten sposób trapezy jesteśmy w stanie podać przybliżoną wartość całki. Poniżej przedstawiono wartość kwadratury na przedziale [a,b] dla funkcji f(x).
-		
-		\begin{equation}	
-		K_{n}^{T}=\frac{h}{2}\sum_{i=0}^{n-1} \left(f(a)+f(b)\right)  , f_{i} = f\left(x_{i}\right)
-		\end{equation}
-		gdzie h - długość przedziału całkowania.\\
-		Naturalnie im mniejszy krok całkowania tym przedział dzielimy na więcej trapezów o mniejszej wysokości, co przekłada się na dokładniejszy wynik. 
-		\\\\
-		\textbf {Metoda parabol (Simpsona)}
-		\\ 
-		Metoda parabol jest jedną z najdokładniejszych metod przybliżonego całkowania. Inaczej niż w metodzie trapezów całkę przybliża się sumą wycinków obszarów pod parabolą. Podobnie jak w metodzie trapezów pierwszym krokiem jest podział przedziału całkowania na takie same odcinki. Kolejno oblicza się środek każdego odcinka i wyznacza się wartość funkcji podcałkowej dla tego punktu. Następnie obliczane są współczynniki paraboli $g_{i}$(x) przechodzącej przez 3 punkty (wartości funkcji podcałkowej) postaci
-		\begin{center}$g_{i}(x)=a_{i}x^{2}+b_{i}x+c_{i} $ gdzie $i\epsilon<x_{n},x_{n+1}>$ \end{center}
-		Wzór Simpsona na przedziale [a,b]
+	Poniżej zamieszczono krótki opis stosowanych metod.
+	\\\\
+	\textbf {Metoda trapezow }
+	\\ 
+	Metoda opiera się na podziale przedziału całkowania na identyczne odcinki. Następnie dla każdego punktu granicznego odcinka znajduje się wartość funkcji podcałkowej w tym punkcie. Tak powstają trapezy - wysokość jest obranym krokiem całkowania, jedną z podstaw jest wartość funkcji dla jednego końca odcinka, a drugą dla drugiego. Korzystając ze wzoru na pole trapezu i sumując wszystkie powstałe w ten sposób trapezy jesteśmy w stanie podać przybliżoną wartość całki. Poniżej przedstawiono wartość kwadratury na przedziale [a,b] dla funkcji f(x).
+	
+	\begin{equation}	
+			K_{n}^{T}=\frac{h}{2}\sum_{i=0}^{n-1} \left(f(a)+f(b)\right)  , f_{i} = f\left(x_{i}\right)
+			\end{equation}
+			gdzie h - długość przedziału całkowania.\\
+	
+	 Naturalnie im mniejszy krok całkowania tym przedział dzielimy na więcej trapezów o mniejszej wysokości, co przekłada się na dokładniejszy wynik. 
+	\\\\
+	\textbf {Metoda parabol (Simpsona)}
+	\\ 
+	Metoda parabol jest jedną z najdokładniejszych metod przybliżonego całkowania. Inaczej niż w metodzie trapezów całkę przybliża się sumą wycinków obszarów pod parabolą. Podobnie jak w metodzie trapezów pierwszym krokiem jest podział przedziału całkowania na takie same odcinki. Kolejno oblicza się środek każdego odcinka i wyznacza się wartość funkcji podcałkowej dla tego punktu. Następnie obliczane są współczynniki paraboli $g_{i}$(x) przechodzącej przez 3 punkty (wartości funkcji podcałkowej) postaci
+\begin{center}$g_{i}(x)=a_{i}x^{2}+b_{i}x+c_{i} $ gdzie $i\epsilon<x_{n},x_{n+1}>$ \end{center}
+%\newpage
+	Wzór Simpsona na przedziale [a,b]
+	\begin{equation}
+	K_{2}(f)=\frac{(b-a)}{6}(f(a)+4f(\frac{a+b}{2})+f(b)) 
+	\end{equation}
+	sumę wszystkich parabol w przedziale całkowania można wiec zapisać w postaci
 		\begin{equation}
-		K_{n}^{P}(f)=\frac{h}{3}\sum_{i=0}^{n/2-1}(f_{2i}+4f_{2i+1}+f_{2i+2}), f_{i} = f\left(x_{i}\right) 
-		\end{equation}
-		W ten sposób funkcja zostaje aproksymowana fragmentami parabol. Ponieważ w większości przypadków mamy do czynienia z funkcjami nieliniowymi ta metoda prowadzi do uzyskania najmniejszego błędu.  
-		
-		
-		Przeprowadzono symulacje podanych metod w środowisku MatLab. Zbadano dla każdej metody wynik obliczonej całki a także błędy związane z zastosowaniem metod numerycznych dla 3 przedziałów całkowania. Dobrano także krok całkowania aby 
-		
+	K_{n}^{P}(f)=\frac{h}{3}\sum_{i=0}^{n/2-1}(f_{2i}+4f_{2i+1}+f_{2i+2}), f_{i} = f\left(x_{i}\right) 
+	\end{equation}
+	 W ten sposób funkcja zostaje aproksymowana fragmentami parabol. Ponieważ w większości przypadków mamy do czynienia z funkcjami nieliniowymi ta metoda prowadzi do uzyskania najmniejszego błędu metody.  
+	 
+	 
+	W celu otrzymania wyniku numerycznych obliczeń przeprowadzono symulacje podanych metod w środowisku MatLab. Wyznaczono dla każdej metody wynik całki dla 3 różnych przedziałów całkowania. Dobrano także eksperymentalnie krok całkowania aby obliczony wynik zgadzał się z podanym wynikiem dokładnym.
+	
+
+	
 	\section{Wyniki}
-Wyniki obliczeń zostały zebrane w poniższej tabeli:\\
+	Na podstawie przeprowadzonych obliczeń, można było odczytać wartości całek i błędów. Poniżej zamieszczono otrzymane wyniki
+	
 	\begin{tabular}{|c|c|c|c|}
 		\hline 
 		& \multicolumn{3}{c|}{Przedział całkowania} \\ 
@@ -71,14 +88,15 @@ Wyniki obliczeń zostały zebrane w poniższej tabeli:\\
 		\hline 
 		Wynik - met. trapezów & $0.682386776678695$ & $0.954218606628634$ & $0.997183726883306$ \\ 
 		\hline 
-		Błąd względny met. trapezów$\left[\%\right]$ & $0.04433$ & $0.02829$ & $0.01168$  \\ 
+		Błąd względny met. trapezów$\left[\%\right]$  & $0.04433$  & $0.02829$ & $0.01168$ \\ 
 		\hline 
 		Wynik - met. parabol & $0.682083809168075$ & $0.954499438241541$ & $0.997061231960167$ \\ 
 		\hline 
-		Błąd względny met. parabol $\left[\%\right]$ & $0.08870$ & $0,0012$ & $0.02396$ \\ 
+		Błąd względny met. parabol $\left[\%\right]$ & $0.08870$  & $0,0012$ & $0.02396$ \\ 
 		\hline 
 	\end{tabular} 
-\\ gdzie błąd względny został wyliczony ze wzoru: $\frac{licznik}{mianownik} $ \\Ponadto, oszacowany został błąd obu metod na zadanych przedziałach. Określony on został dla metody trapezów jako:
+\\\\
+gdzie błąd względny został wyliczony ze wzoru: $|\frac{x_{met} - x_{dok}}{x_{dok}]} |$ \\\\Ponadto, oszacowany został błąd obu metod na zadanych przedziałach. Określony on został dla metody trapezów jako:
 \begin{equation}
 E \left(f\right) = - \frac{\left(b-a\right)^{3}}{12n^{2}} f^{\left(2\right)} \left( \xi \right)
 \end{equation}
@@ -86,8 +104,9 @@ gdzie $\xi \in \left[a, b\right]$, oraz dla metody parabol:
 \begin{equation}
 E \left(f\right) = - \frac{\left(b-a\right)^{5}}{180n^{4}} f^{\left(4\right)} \left( \xi \right)
 \end{equation}
-gdzie $\xi \in \left[a, b\right]$. \\ Możemy zauważyć, że jest on zależny od odpowiednio 3 i 5 potęgi przedziału całkowania. Można więc go zmniejszyć, zmniejszając dany przedział. Widoczne jest to w wynikach obliczeń, zawartych w poniższej tabeli: \\
-\begin{tabular}{|p{3.5cm}|c|c|c|}
+gdzie $\xi \in \left[a, b\right]$. \\\\
+ Możemy zauważyć, że jest on zależny od odpowiednio 3 i 5 potęgi przedziału całkowania (błąd kwadratury rzędu $0(h^{2}$ oraz $0(h^{4}$)). Można więc go zmniejszyć, zmniejszając dany przedział. Widoczne jest to w wynikach obliczeń, zawartych w poniższej tabeli: \\
+\begin{tabular}{|c|c|c|c|}
 	\hline 
 	& \multicolumn{3}{c|}{Przedział całkowania} \\ 
 	\hline 
@@ -95,21 +114,133 @@ gdzie $\xi \in \left[a, b\right]$. \\ Możemy zauważyć, że jest on zależny o
 	\hline 
 	Oszacowanie błędu met. trapezów & -1.0417e-08 & -2.0833e-04 & -1.2500e-05  \\ 
 	\hline 
-	Oszacowanie błędu met. parabol & -3.2552e-15 & -6.5104e-07 & -1.5625e-09 \\ 
+	Oszacowanie błędu met. parabol & -3.2552e-15 & -6.5104e-07 & -1.5625e-09  \\ 
 	\hline 
-\end{tabular} 
+\end{tabular} \\\\
+Narysowano także wykresy błędów metody, w zależności od kroku całkowania k
 
-Narysowano także wykresy błędów metody, w zależności od kroku całkowania:
-%\includegraphics[width=\textwidth]{Trap1.jpg}
-%\includegraphics[width=\textwidth]{Trap2.jpg}
-%\includegraphics[width=\textwidth]{Trap3.jpg}
-%\includegraphics[width=\textwidth]{Para1.jpg}
-%\includegraphics[width=\textwidth]{Para2.jpg}
-%\includegraphics[width=\textwidth]{Para3.jpg}
+\begin{figure}
+	\centering
+	 \includegraphics[width=\textwidth]{Trap1.jpg} 
+	\caption{Wykres błędu metody trapezów w przedziale $\overline{x}\pm\sigma$}
+	\label{fig:Trap1.jpg}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{Trap2.jpg} 
+	\caption{Wykres błędu metody trapezów w przedziale $\overline{x}\pm2\sigma$}
+	\label{fig:Trap2.jpg}
+\end{figure}
+	 \begin{figure}
+	 	\centering
+	  \includegraphics[width=\textwidth]{Trap3.jpg} 
+	 	\caption{Wykres błędu metody trapezów w przedziale $\overline{x}\pm3\sigma$}
+	 	\label{fig:Trap2.jpg}
+	 \end{figure}
+	  \begin{figure}
+	 	\centering
+	 	\includegraphics[width=\textwidth]{Para1.jpg} 
+	 	\caption{Wykres błędu metody parabol w przedziale $\overline{x}\pm\sigma$}
+	 	\label{fig:Para1.jpg}
+	 \end{figure}
+		  \begin{figure}
+		\centering
+	\includegraphics[width=\textwidth]{Para2.jpg}
+	\caption{Wykres błędu metody parabol w przedziale $\overline{x}\pm2\sigma$}
+		\label{fig:Para2.jpg}
+	\end{figure}
+	
+	 		  \begin{figure}
+	 	\centering
+	  \includegraphics[width=\textwidth]{Para3.jpg}
+	 	\caption{Wykres błędu metody parabol w przedziale $\overline{x}\pm3\sigma$}
+	 	\label{fig:Para3.jpg}
+	 \end{figure}
+	 
+	
+	 
+\newpage
+
 	\section{Wnioski}
-	Otrzymane wyniki dowiodły możliwości przeprowadzenia całkowania numerycznego z wykorzystaniem metod trapezów i parabol. W obu przypadkach otrzymane wyniki są zgodne (do kilku miejsc po przecinku) co do podanego wyniku dokładnego. Jak wszystkie metody numeryczne również i te nie są pozbawione błędów wynikających przede wszystkim z przybliżeń.\\
-	Zauważono wpływ przedziału całkowania na efektywnośc obu metod, ponadto bardzo istotnym czynnikiem był też krok całkowania, który należało dobrać tak aby uzyskać wynik całki podobny do podanego.\\
-	Sporządzone wykresy błędu  obrazują w jaki sposób zmienia się błąd w zależności od obranego kroku całkowania\\
+	Otrzymane wyniki dowiodły możliwości przeprowadzenia całkowania numerycznego z wykorzystaniem metod trapezów i parabol. W obu przypadkach otrzymane wyniki są zgodne (do kilku miejsc po przecinku) co do podanego wyniku dokładnego. Jak wszystkie metody numeryczne również i te nie są pozbawione błędów wynikających przede wszystkim z koniecznych przybliżeń.\\
+	Zauważono wpływ długości przedziału całkowania na efektywność obu metod. Zwiększenie przedziału całkowania przekłada się na zmniejszenie błędu względnego. Odwrotna zależność powinna zachodzić dla błędu metody który jest tym mniejszy im mniejszy przedział całkowania - jednak z niewiadomych przyczyn nie udało się tego ostatecznie dowieść.  Ponadto bardzo istotnym czynnikiem był też krok całkowania, który z jednej strony wpływał na precyzję obliczeń, a z drugiej znacząco wydłużał czas kalkulacji.\\
+	Sporządzone wykresy błędu  obrazują zależność błędu od kroku całkowania - jak widać nie jest to zależność liniowa.\\
+	Poniżej dołączony został skrypt programu w języku MatLab.
+
+	\begin{lstlisting}
+	format long
+	xsr = 12;
+	sigma = 0.04;
+	
+
+	p=menu('Wybor metody calkowania', 'Metoda trapezow', 'Metoda parabol'); 
+	if (p==1) 
+	disp('Metoda trapezow') 
+	elseif (p==2) 
+	disp('Metoda parabol') 
+	end  
+	
+	
+	
+	o=menu('Wybor granic calkowania', 'a = xsr - sigma, b = xsr + sigma' ,
+	 'a = xsr - 2*sigma, b = xsr + 2*sigma', 'a = xsr - 3*sigma, b = xsr + 3*sigma'); 
+	
+	if (o==1) 
+	disp('a = xsr - sigma, b = xsr + sigma') 
+	a = xsr - sigma;
+	b = xsr + sigma;
+	if (p==1) 
+	
+	wykres(a, b, 0);
+	metoda_trapezow(0.00005, a, b);
+	blad_kwadratur(0.00005, a, b, 0);
+	
+	elseif (p==2)
+	
+	wykres(a, b, 1);
+	display(metoda_parabol(0.00005, a, b));
+	blad_kwadratur(0.00005, a, b, 1);
+	
+	end 
+	
+	elseif (o==2) 
+	disp('a = xsr - 2*sigma, b = xsr + 2*sigma') 
+	a = xsr - 2*sigma;
+	b = xsr + 2*sigma;
+	if (p==1) 
+	
+	wykres(a, b, 0);
+	metoda_trapezow(0.005, a, b)
+	blad_kwadratur(0.005, a, b, 0);
+	
+	elseif (p==2)
+	
+	wykres(a, b, 1);
+	metoda_parabol(0.005, a, b);
+	blad_kwadratur(0.005, a, b, 1);
+	
+	end 
+	
+	elseif (o==3)   
+	disp('a = xsr - 3*sigma, b = xsr + 3*sigma') 
+	a = xsr - 3*sigma;
+	b = xsr + 3*sigma;
+	if (p==1) 
+	
+	wykres(a, b, 0);
+	metoda_trapezow(0.001, a, b);
+	blad_kwadratur(0.001, a, b, 0);
+	
+	elseif (p==2)
+	
+	wykres(a, b, 1);
+	metoda_parabol(0.001, a, b);
+	blad_kwadratur(0.001, a, b, 1);
+	
+	end 
+	end
+	\end{lstlisting}
+
 \end{document}
 \begin{thebibliography}
 	\bibitem{wyklady} Zofia, \textit{Materiały do wykładów oraz projektów}
